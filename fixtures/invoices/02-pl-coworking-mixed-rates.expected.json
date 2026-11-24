@@ -1,0 +1,41 @@
+{
+  "documentType": "invoice",
+  "invoiceNumber": "12/11/2026",
+  "issueDate": "2026-11-05",
+  "saleDate": "2026-10-31",
+  "seller": {
+    "name": "Przestrzeń Coworking S.A.",
+    "taxId": "9452003007",
+    "countryCode": "PL",
+    "address": "ul. Lubicz 17, 31-503 Kraków"
+  },
+  "buyer": {
+    "name": "Jan Testowy Software",
+    "taxId": "5270001236",
+    "countryCode": "PL",
+    "address": "ul. Przykładowa 1/2, 30-001 Kraków"
+  },
+  "currency": "PLN",
+  "lines": [
+    {
+      "description": "Hot desk — abonament miesięczny",
+      "quantity": 1,
+      "netAmount": 650,
+      "vatRate": "23",
+      "vatAmount": 149.5
+    },
+    {
+      "description": "Pakiet kawowy",
+      "quantity": 1,
+      "netAmount": 80,
+      "vatRate": "8",
+      "vatAmount": 6.4
+    }
+  ],
+  "totals": {
+    "net": 730,
+    "vat": 155.9,
+    "gross": 885.9
+  },
+  "reverseCharge": false
+}

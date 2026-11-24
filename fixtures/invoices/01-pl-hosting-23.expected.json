@@ -1,0 +1,34 @@
+{
+  "documentType": "invoice",
+  "invoiceNumber": "FV/2026/11/0142",
+  "issueDate": "2026-11-03",
+  "saleDate": "2026-10-31",
+  "seller": {
+    "name": "Chmurka Hosting Sp. z o.o.",
+    "taxId": "6761002004",
+    "countryCode": "PL",
+    "address": "ul. Wielicka 50, 30-552 Kraków"
+  },
+  "buyer": {
+    "name": "Jan Testowy Software",
+    "taxId": "5270001236",
+    "countryCode": "PL",
+    "address": "ul. Przykładowa 1/2, 30-001 Kraków"
+  },
+  "currency": "PLN",
+  "lines": [
+    {
+      "description": "Serwer VPS L — październik 2026",
+      "quantity": 1,
+      "netAmount": 89,
+      "vatRate": "23",
+      "vatAmount": 20.47
+    }
+  ],
+  "totals": {
+    "net": 89,
+    "vat": 20.47,
+    "gross": 109.47
+  },
+  "reverseCharge": false
+}

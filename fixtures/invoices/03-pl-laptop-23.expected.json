@@ -1,0 +1,41 @@
+{
+  "documentType": "invoice",
+  "invoiceNumber": "FV 3381/11/2026",
+  "issueDate": "2026-11-10",
+  "saleDate": "2026-11-10",
+  "seller": {
+    "name": "Bajt Sklep Komputerowy Sp. z o.o.",
+    "taxId": "1133004003",
+    "countryCode": "PL",
+    "address": "ul. Grójecka 120, 02-367 Warszawa"
+  },
+  "buyer": {
+    "name": "Jan Testowy Software",
+    "taxId": "5270001236",
+    "countryCode": "PL",
+    "address": "ul. Przykładowa 1/2, 30-001 Kraków"
+  },
+  "currency": "PLN",
+  "lines": [
+    {
+      "description": "Laptop 14\" 32 GB RAM / 1 TB SSD",
+      "quantity": 1,
+      "netAmount": 6499,
+      "vatRate": "23",
+      "vatAmount": 1494.77
+    },
+    {
+      "description": "Mysz bezprzewodowa",
+      "quantity": 2,
+      "netAmount": 118,
+      "vatRate": "23",
+      "vatAmount": 27.14
+    }
+  ],
+  "totals": {
+    "net": 6617,
+    "vat": 1521.91,
+    "gross": 8138.91
+  },
+  "reverseCharge": false
+}

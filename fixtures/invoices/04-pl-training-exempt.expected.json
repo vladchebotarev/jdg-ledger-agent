@@ -1,0 +1,34 @@
+{
+  "documentType": "invoice",
+  "invoiceNumber": "FS/77/2026",
+  "issueDate": "2026-11-12",
+  "saleDate": "2026-11-12",
+  "seller": {
+    "name": "Akademia Szkoleń Fikus Sp. z o.o.",
+    "taxId": "6794005002",
+    "countryCode": "PL",
+    "address": "ul. Rakowicka 7, 31-511 Kraków"
+  },
+  "buyer": {
+    "name": "Jan Testowy Software",
+    "taxId": "5270001236",
+    "countryCode": "PL",
+    "address": "ul. Przykładowa 1/2, 30-001 Kraków"
+  },
+  "currency": "PLN",
+  "lines": [
+    {
+      "description": "Szkolenie: Kubernetes w praktyce (2 dni)",
+      "quantity": 1,
+      "netAmount": 1800,
+      "vatRate": "zw",
+      "vatAmount": 0
+    }
+  ],
+  "totals": {
+    "net": 1800,
+    "vat": 0,
+    "gross": 1800
+  },
+  "reverseCharge": false
+}

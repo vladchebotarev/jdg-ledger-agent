@@ -1,0 +1,41 @@
+{
+  "name": "jdg-ledger-agent",
+  "version": "1.0.0",
+  "description": "Accounting agent for a Polish sole proprietorship (JDG, ryczałt): KSeF + PDF invoices, LLM extraction and classification, deterministic tax engine, human review.",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "extract": "tsx src/cli/extract.ts",
+    "fixtures:generate": "tsx fixtures/generate-invoices.ts",
+    "eval:extraction": "tsx evals/extraction.eval.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vladchebotarev/jdg-ledger-agent.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/vladchebotarev/jdg-ledger-agent/issues"
+  },
+  "homepage": "https://github.com/vladchebotarev/jdg-ledger-agent#readme",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.13.0",
+    "dotenv": "^18.0.10",
+    "pdfkit": "^0.21.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/pdfkit": "^0.17.7",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.1"
+  },
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  }
+}

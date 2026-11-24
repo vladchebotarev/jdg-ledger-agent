@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.env
+# Real financial documents never leave your machine
+data/private/
+logs/
+evals/results/

@@ -1,0 +1,34 @@
+{
+  "documentType": "proforma",
+  "invoiceNumber": "PRO/112/2026",
+  "issueDate": "2026-11-20",
+  "saleDate": null,
+  "seller": {
+    "name": "Bajt Sklep Komputerowy Sp. z o.o.",
+    "taxId": "1133004003",
+    "countryCode": "PL",
+    "address": "ul. Grójecka 120, 02-367 Warszawa"
+  },
+  "buyer": {
+    "name": "Jan Testowy Software",
+    "taxId": "5270001236",
+    "countryCode": "PL",
+    "address": "ul. Przykładowa 1/2, 30-001 Kraków"
+  },
+  "currency": "PLN",
+  "lines": [
+    {
+      "description": "Monitor 27\" 4K",
+      "quantity": 1,
+      "netAmount": 1299,
+      "vatRate": "23",
+      "vatAmount": 298.77
+    }
+  ],
+  "totals": {
+    "net": 1299,
+    "vat": 298.77,
+    "gross": 1597.77
+  },
+  "reverseCharge": false
+}
