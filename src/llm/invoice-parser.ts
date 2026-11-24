@@ -6,6 +6,16 @@ import { estimateCostUsd, logLlmCall, type LlmCallRecord } from "./usage-log.js"
 export const DEFAULT_MODEL = "claude-opus-5-5";
 
 /**
+ * On a safety decline the API can re-run the request on a fallback model inside the same call.
+ * Haiku has no server-side fallback (a fallback list returns a 400), so it is sent only for
+ * Opus/Sonnet; a declined Haiku request surfaces as a "refusal" result instead.
+ */
+export function serverFallbackParams(model: string) {
+  if (model.startsWith("claude-haiku")) return {};
+  return { betas: ["server-side-fallback-2026-07-01"], fallbacks: "default" as const };
+}
+
+/**
  * The extraction logic depends on this interface, not on the SDK,
  * so retries and validation can be unit-tested with a fake.
  */
@@ -59,9 +69,7 @@ export class AnthropicInvoiceParser implements InvoiceParser {
     const response = await this.client.beta.messages.parse({
       model: this.model,
       max_tokens: 16000,
-      // On a safety decline the API re-runs the request on a fallback model inside the same call.
-      betas: ["server-side-fallback-2026-07-01"],
-      fallbacks: "default",
+      ...serverFallbackParams(this.model),
       system: SYSTEM_PROMPT,
       messages: [
         {
