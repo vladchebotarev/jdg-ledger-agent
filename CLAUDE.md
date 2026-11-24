@@ -4,6 +4,10 @@ Accounting assistant for a Polish JDG taxed with ryczałt. A learning project fo
 engineering: the owner is moving from full-stack (Node.js/TypeScript) into AI engineering and must be
 able to explain every part of it in an interview.
 
+**Start every session by reading `docs/context.md`** (goals, decisions and why, open proposals,
+status) and `docs/roadmap.md` (phases and the owner's current tasks). Do not re-open decisions
+recorded there unless the owner asks; when a decision changes or a phase completes, update both.
+
 ## Hard rules
 
 - **The LLM never calculates tax and never submits anything.** Tax math lives in deterministic,

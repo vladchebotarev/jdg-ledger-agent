@@ -22,6 +22,8 @@ These are deliberately left to me, because building them is the point of the pro
 
 1. **Run it.** Add `ANTHROPIC_API_KEY` and `OWNER_NIP` to `.env`, run `npm run extract` on two fixtures,
    then `npm run eval:extraction`. Read `logs/llm-calls.jsonl`: what did one document cost?
+   Run the eval twice, with `LLM_MODEL=claude-haiku-5-5` and `LLM_MODEL=claude-opus-5-5`, and compare
+   accuracy and cost per field. Record the result in `docs/context.md`.
 2. **Read the code path end to end**: `src/llm/invoice-parser.ts` → `src/extraction/extract-invoice.ts`
    → `src/domain/validation.ts`. Be able to explain why the retry sends validation errors back and why
    the LLM never fixes totals itself.
