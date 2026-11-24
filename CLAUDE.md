@@ -39,4 +39,5 @@ owner explicitly asks for the implementation.
 - LLM code goes through `src/llm/`; business logic depends on interfaces (e.g. `InvoiceParser`) so it
   can be tested with fakes.
 - Claude API: default model `claude-opus-5-5`; structured outputs via `client.beta.messages.parse`
-  + `betaZodOutputFormat`; keep `fallbacks: "default"` on requests.
+  + `betaZodOutputFormat`; `serverFallbackParams()` adds `fallbacks: "default"` for Opus/Sonnet (Haiku has
+  no server-side fallback). Switch models with `LLM_MODEL`; choose per step by eval results, not by guess.
