@@ -15,7 +15,7 @@ a human. **All tax math is deterministic code. The LLM never calculates or files
 
 | Concern | Decision |
 |---|---|
-| Wrong tax numbers are expensive | The LLM reads and classifies. Code computes. A human approves low-confidence decisions. |
+| Wrong tax numbers are expensive | The LLM reads and classifies. Code computes. I approve low-confidence decisions; open questions go to my accountant, who keeps filing the returns. |
 | LLM output can be malformed or wrong | Structured outputs with a Zod schema, then deterministic validation (NIP checksum, line sums, totals). Failed validation triggers one retry with the errors as feedback, then human review. |
 | "It seems to work" is not a metric | Evals with ground truth for every LLM step, and a backtest of past months against what was actually filed. |
 | Financial data is private | Synthetic fixtures in the repo. Real documents stay in a git-ignored folder on my machine. |

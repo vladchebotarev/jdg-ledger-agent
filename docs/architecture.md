@@ -10,9 +10,25 @@ the classification agent for documents that are not routine, and the Q&A assista
 ## Document lifecycle
 
 ```
-NEW → EXTRACTED → CLASSIFIED → (NEEDS_REVIEW) → APPROVED → BOOKED
+NEW → EXTRACTED → CLASSIFIED → (NEEDS_REVIEW) → APPROVED → BOOKED → SENT_TO_ACCOUNTANT
                       ↘ REJECTED (duplicate, not my document, proforma)
+                                     ↘ ASK_ACCOUNTANT → APPROVED (her answer is stored as a label)
 ```
+
+## Working with the accountant
+
+The owner has an accountant (księgowa) who keeps the books and files the returns. The tool does not
+replace her; it prepares her work and checks it:
+
+- **Monthly package for the accountant:** all documents of the month, already extracted and classified,
+  plus a short list of open questions instead of a pile of PDFs.
+- **Open questions go to her.** Anything the agent and the owner cannot settle (mixed-use assets,
+  unusual foreign services) gets status `ASK_ACCOUNTANT`. Her answer is stored with the document and
+  becomes a labeled example for the classification eval and vendor memory.
+- **Her filings are ground truth.** Past JPK_V7M files and her monthly ryczałt / ZUS calculations are
+  the reference for the E4 backtest. A mismatch is investigated, never auto-corrected on either side.
+- **Cross-check.** Each month the tool computes the amounts independently; if they differ from hers,
+  that difference is the question to ask.
 
 ## Modules
 
@@ -23,7 +39,7 @@ NEW → EXTRACTED → CLASSIFIED → (NEEDS_REVIEW) → APPROVED → BOOKED
 | 3 | Classification | yes | Agent with tools: vendor history, tax-law search (RAG), VAT status (VIES / MF white list), NBP rates. Returns a decision with confidence, rationale and citations. |
 | 4 | Review queue | human | Low confidence, new vendor or large amount → I approve or correct. Every correction becomes vendor memory and a labeled eval example. |
 | 5 | Ledger + tax engine | no | Pure functions with unit tests. Rates and thresholds in versioned config per year. |
-| 6 | Reporting | no | Monthly summary (what to pay, where, by when), JPK_V7M draft validated against the official XSD. I sign and submit it myself. |
+| 6 | Reporting | no | Monthly package for the accountant, monthly summary (what to pay, where, by when), JPK_V7M draft validated against the official XSD as a cross-check. Filing stays with the accountant. |
 | 7 | Interfaces | – | CLI first, then an MCP server (read-mostly tools; one write tool, `approve_document`, with explicit confirmation), then a small review UI. |
 | 8 | RAG | – | VAT act, PIT act, ryczałt act, selected interpretations; chunked by article; PostgreSQL + pgvector. |
 
@@ -51,7 +67,7 @@ The owner is taxed with *ryczałt od przychodów ewidencjonowanych*, which chang
 | E1 extraction | Field accuracy on PDFs against ground truth (`npm run eval:extraction`) |
 | E2 classification | VAT treatment and deduction accuracy; whether errors land in the review queue |
 | E3 RAG | Did retrieval find the right article; is the answer correct (LLM-as-judge) |
-| E4 backtest | Recompute past months and compare with what was actually filed, to the grosz |
+| E4 backtest | Recompute past months and compare with what the accountant actually filed, to the grosz |
 
 The tax engine is tested with unit tests, not evals: it must be exact, not probably right.
 

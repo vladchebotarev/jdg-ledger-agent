@@ -8,9 +8,9 @@ Pace: ~10-12 h/week. Each phase ends with a commit, passing tests and, where an 
 | 1 | Domain model + document state machine, NestJS modules, PostgreSQL (docker-compose), NBP rates, E1 on 30 docs | |
 | 2 | KSeF 2.0 connector (test environment), FA XML parser, mock KSeF, KSeF/PDF dedupe | |
 | 3 | Classification agent with tools (vendor history, VIES/white list, NBP), review queue in CLI, E2 | |
-| 4 | Ryczałt tax engine + ZUS/health contribution + deadlines, rates config per year, E4 backtest | |
+| 4 | Ryczałt tax engine + ZUS/health contribution + deadlines, rates config per year, E4 backtest against the accountant's past filings | |
 | 5 | RAG over tax law, Q&A assistant with citations, MCP server, E3 | |
-| 6 | JPK_V7M draft + XSD validation, evals in CI, English README polish, architecture diagram, demo video | |
+| 6 | Monthly package for the accountant, JPK_V7M draft + XSD validation as a cross-check, evals in CI, English README polish, architecture diagram, demo video | |
 | 7 (optional) | Demo deployment on AWS with synthetic data via Terraform | |
 
 Not in the MVP: OCR of photos, bank integration (CSV import at most), multiple users, automatic submission.
@@ -33,3 +33,6 @@ These are deliberately left to me, because building them is the point of the pro
 5. **First classification eval (write it yourself).** Label the 8 fixtures by hand in
    `fixtures/invoices/*.classification.json`. Where you are unsure of the correct VAT treatment, ask
    your accountant: the uncertainty itself is useful data. Then mirror `evals/extraction.eval.ts`.
+6. **Ask the accountant for the backtest data now** (it takes time to arrive): JPK_V7M files and the
+   monthly ryczałt / ZUS / health-contribution calculations for the last 6-12 months, plus how she
+   would like to receive documents each month. Store them in `data/private/` only.

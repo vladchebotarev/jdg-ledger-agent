@@ -7,7 +7,8 @@ able to explain every part of it in an interview.
 ## Hard rules
 
 - **The LLM never calculates tax and never submits anything.** Tax math lives in deterministic,
-  unit-tested code. Submissions (JPK, ZUS, PIT) are done by the owner by hand.
+  unit-tested code. Submissions (JPK, ZUS, PIT) stay with the owner's accountant (księgowa); the tool
+  prepares documents for her and cross-checks her numbers, it never files.
 - **Every LLM output is validated by code** before it is trusted (Zod schema + domain validation).
   Failed validation → retry with feedback → human review. Never silently "fix" values.
 - **No real financial data in the repo.** Real documents go to `data/private/` (git-ignored).
