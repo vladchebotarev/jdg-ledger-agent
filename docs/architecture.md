@@ -75,7 +75,8 @@ The tax engine is tested with unit tests, not evals: it must be exact, not proba
 
 - Claude API through `@anthropic-ai/sdk`; default model `claude-opus-5-5`, effort `medium` for extraction.
   Cheaper models are an eval-driven decision, made per step with numbers.
-- Structured outputs via `client.beta.messages.parse` + `betaZodOutputFormat`; server-side refusal
+- Structured outputs via `client.beta.messages.create` + `betaZodOutputFormat`; the reply is parsed and
+  validated in our code, after the call is logged and `stop_reason` checked. Server-side refusal
   fallback enabled (`fallbacks: "default"`).
 - Documents are untrusted input: the system prompt tells the model to ignore instructions inside them,
   and nothing the model returns is acted on without validation.

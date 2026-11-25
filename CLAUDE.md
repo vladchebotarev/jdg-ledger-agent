@@ -42,6 +42,7 @@ owner explicitly asks for the implementation.
 - Money: compare in grosze (integers), never raw floats.
 - LLM code goes through `src/llm/`; business logic depends on interfaces (e.g. `InvoiceParser`) so it
   can be tested with fakes.
-- Claude API: default model `claude-opus-5-5`; structured outputs via `client.beta.messages.parse`
-  + `betaZodOutputFormat`; `serverFallbackParams()` adds `fallbacks: "default"` for Opus/Sonnet (Haiku has
-  no server-side fallback). Switch models with `LLM_MODEL`; choose per step by eval results, not by guess.
+- Claude API: default model `claude-opus-5-5`; structured outputs via `client.beta.messages.create`
+  + `betaZodOutputFormat`, parsed in our code (`messages.parse` throws before the call is logged);
+  `serverFallbackParams()` adds `fallbacks: "default"` for Opus/Sonnet (Haiku has no server-side
+  fallback). Switch models with `LLM_MODEL`; choose per step by eval results, not by guess.
